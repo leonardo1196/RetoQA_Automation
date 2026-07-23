@@ -6,9 +6,9 @@ function fn() {
   }
 
   if (env == 'dev') {
-    urlhost = 'https://serverest.dev'
+     var UrlHost = 'https://serverest.dev'
   } else if (env == 'qa') {
-    urlhost = 'https://serverest.dev'
+    var UrlHost = 'https://serverest.dev'
   }
 
   var config = {
