@@ -13,7 +13,7 @@ function fn() {
 
   var config = {
     env: env,
-    urlhost: urlhost
+    UrlHost: UrlHost
   }
   return config;
 }
