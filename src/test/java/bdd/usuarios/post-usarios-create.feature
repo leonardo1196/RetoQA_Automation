@@ -42,8 +42,7 @@ Feature: Validar el endpoint de creacion de usuarios del api de usuarios
     Then status 400
     * match response.message == "Este email já está sendo usado"
     Examples:
-      |Name           |email                    |password    |administrador|
-      | CarlosV7      | usuario837399@test.com | Pass837399! | false        |
+      | karate.read('file:src/test/java/bdd/res/post-usuarios-create/data.csv')|
 
   @unhappypath
   Scenario Outline: [Status 405] Validar creacion de usuario con endpoint incorrecto
