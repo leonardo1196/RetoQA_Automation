@@ -1,7 +1,7 @@
 @obtener-usuarios
 Feature: Validar el endpoint de traer los datos del cliente del api de usuarios
 
-  @Reutilizable
+  @Reutilizable @ignore
   Scenario: [Status 200] Validar traer informacion de usuario correctamente
     Given url UrlHost + '/usuarios/'+_id
     When method get
