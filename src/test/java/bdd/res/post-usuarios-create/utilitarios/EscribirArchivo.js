@@ -8,17 +8,28 @@ function UtilidadesArchivo() {
         Files.write(rutaArchivo, contenido.getBytes('UTF-8'));
     }
 
-    function escribirLinea(contenido, ruta) {
+
+    function agregarId(ruta, nombreUsuario, id) {
         var rutaArchivo = Paths.get(ruta);
-        var textoAEscribir = contenido;
-        if (Files.exists(rutaArchivo) && Files.size(rutaArchivo) > 0) {
-            textoAEscribir = '\n' + contenido;
+        var lineasLeidas = Files.readAllLines(rutaArchivo);
+        var lineas = [];
+        for (var i = 0; i < lineasLeidas.size(); i++) {
+            lineas.push(lineasLeidas.get(i));
         }
-        Files.write(rutaArchivo, textoAEscribir.getBytes('UTF-8'), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        if (lineas.length > 0 && lineas[0].indexOf('_id') === -1) {
+            lineas[0] = lineas[0] + ',_id';
+        }
+        for (var i = 1; i < lineas.length; i++) {
+            var columnas = lineas[i].split(',');
+            if (columnas[0] === nombreUsuario) {
+                lineas[i] = lineas[i] + ',' + id;
+            }
+        }
+        Files.write(rutaArchivo, lineas.join('\n').getBytes('UTF-8'));
     }
 
     return {
         escribirArchivo: escribirArchivo,
-        escribirLinea: escribirLinea
+        agregarId: agregarId
     };
 }
