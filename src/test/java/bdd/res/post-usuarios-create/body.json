@@ -1,0 +1,6 @@
+{
+  "nome": "#(Name)",
+  "email": "#(email)",
+  "password": "#(password)",
+  "administrador": "#(administrador)"
+}
