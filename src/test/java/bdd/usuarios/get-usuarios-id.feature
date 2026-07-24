@@ -1,5 +1,13 @@
 @obtener-usuarios
 Feature: Validar el endpoint de traer los datos del cliente del api de usuarios
+
+  @Reutilizable
+  Scenario: [Status 200] Validar traer informacion de usuario correctamente
+    Given url UrlHost + '/usuarios/'+_id
+    When method get
+    Then status 200
+    * def datos_usuario = response
+
   @happypath
   Scenario Outline: [Status 200] Validar traer informacion de usuario correctamente
     Given url UrlHost + '/usuarios/'+_id
